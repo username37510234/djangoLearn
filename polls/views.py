@@ -16,7 +16,8 @@ def index(request):
     return render(request=request, template_name='index.html', context=context)
 
 def detail(request, question_id):
-    return HttpResponse("You're looking at question %s." % question_id)
+    question = Question.objects.get(pk=question_id)
+    return render(request, 'detail.html', {'question': question})
 
 def results(request, question_id):
     response = "You're looking at the results of question %s."
